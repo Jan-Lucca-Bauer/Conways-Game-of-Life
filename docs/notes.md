@@ -14,15 +14,17 @@ Seperated event handling, updates, and rendering into distinct steps to keep the
 One of the first problems were to make a stable and reusable text renderer. At the end I decided to make it a simple function then a class to keep it simple.
 
 ### Result & Next Steps
-Finished the foundation for the app. Next, I plan to implement the grid representation and the camera.
+Finished the foundation for the app. Next, I plan to implement the systems for the menus.
 
 <br>
 
 ## Day 2 - 10/10/2027
 
 ### Work Done
-Added a document that explains all rules from Conway's Game of Life.
+Added a document that explains all rules from Conway's Game of Life. Added a scene handler for handling scene changing and transitions. Started working on the main menu.
 
 ### Problems & Dicisions
+The next problem were to make 
 
 ### Result & Next Steps
+Next, I will work on the grid.
