@@ -4,7 +4,7 @@ from pygame import Vector2
 def draw_text(
     canvas: pygame.Surface,
     text: str,
-    position: Vector2,
+    pos: Vector2,
     font: pygame.font.Font,
     color: tuple = (255,255,255),
     alpha: int = 255,
@@ -15,7 +15,7 @@ def draw_text(
     bg_color: tuple | None = None,
     bg_width: int | None = None,
     bg_height: int | None = None,
-    bg_padding: tuple[int, int] = (0, 0),
+    bg_padding: Vector2 = Vector2(0, 0),
     bg_border_radius: int = 0,
     bg_alpha: int = 255
 ) -> pygame.Rect:
@@ -59,11 +59,11 @@ def draw_text(
         "top": "top"
     }
 
-    setattr(text_rect, horizontal_anchors[align], position.x)
-    setattr(text_rect, vertical_anchors[valign], position.y)
+    setattr(text_rect, horizontal_anchors[align], pos.x)
+    setattr(text_rect, vertical_anchors[valign], pos.y)
 
-    final_bg_width = bg_width if bg_width is not None else text_rect.width + (bg_padding[0] * 2)
-    final_bg_height = bg_height if bg_height is not None else text_rect.height + (bg_padding[1] * 2)
+    final_bg_width = bg_width if bg_width is not None else text_rect.width + (bg_padding.x * 2)
+    final_bg_height = bg_height if bg_height is not None else text_rect.height + (bg_padding.y * 2)
 
     bg_rect = pygame.Rect(0, 0, final_bg_width, final_bg_height)
 
@@ -72,7 +72,7 @@ def draw_text(
     if bg_color:
         if bg_alpha < 255:
             bg_surface = pygame.Surface((bg_rect.width, bg_rect.height), pygame.SRCALPHA)
-            bg_color = (*bg_color, alpha)
+            bg_color = (*bg_color, bg_alpha)
             pygame.draw.rect(bg_surface, bg_color, (0, 0, bg_rect.width, bg_rect.height), border_radius=bg_border_radius)
             canvas.blit(bg_surface, bg_rect)
 

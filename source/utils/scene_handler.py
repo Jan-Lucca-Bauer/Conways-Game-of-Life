@@ -1,3 +1,4 @@
+import pygame
 import data.app_globals as app_globals
 
 # The scene handler that handles scene changing and updating/rendering.
@@ -9,6 +10,12 @@ class SceneHandler():
         )
 
     def set(self, scene) -> None:
+        pygame.mixer.stop()
+
+        # Deletes the old loaded scene.
+        del self.current_scene
+
+        # Loads the new scene.
         self.current_scene = scene()
 
     def update(self, dt) -> None:

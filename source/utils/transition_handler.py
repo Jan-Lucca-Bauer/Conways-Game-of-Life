@@ -23,6 +23,8 @@ class Transition:
         self.surface.set_alpha(0)
 
     def update(self, dt: float) -> None:
+        app_globals.fading = self.phase != Phase.disabled
+
         if self.phase == Phase.disabled:
             return
         

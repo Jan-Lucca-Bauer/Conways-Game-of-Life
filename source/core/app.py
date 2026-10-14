@@ -1,11 +1,10 @@
 import pygame
 from pygame import Vector2
-from utils.text import draw_text
+from ui.elements.text import draw_text
 import data.app_globals as app_globals
 import data.user_input as user_input
-from utils.transition import Transition
+from utils.transition_handler import Transition
 from utils.scene_handler import SceneHandler
-from scenes.main_menu import MainMenu
 
 class App:
 
@@ -15,6 +14,8 @@ class App:
         # Set resolution global for other systems and calculate the anchors.
         app_globals.width = base_res[0]
         app_globals.height = base_res[1]
+        
+        app_globals.center = Vector2(base_res[0] / 2, base_res[1] / 2)
 
         self.window_size = window_size
         self.framerate = framerate
@@ -23,17 +24,21 @@ class App:
         app_globals.transition = Transition()
 
         # Creates the scene handler and directly access the main menu.
-        app_globals.scene = SceneHandler(MainMenu)
+        app_globals.scene = SceneHandler(app_globals.Scene.main_menu)
 
-        self.running = True
+        app_globals.running = True
 
-        self.debug = False
+        self.debug = True
 
         # Pygame setup.
         pygame.init()
 
         self.window = pygame.display.set_mode(window_size, pygame.RESIZABLE)
+
         pygame.display.set_caption("Canways Game of Life")
+        pygame.display.set_icon(
+            pygame.image.load("assets/images/icon.png").convert_alpha()
+        )
 
         self.canvas = pygame.Surface(base_res)
 
@@ -74,7 +79,7 @@ class App:
         
     # Main loop.
     def run(self) -> None:
-        while self.running:
+        while app_globals.running:
             self.handle_events()
             self.update()
             self.render()
@@ -83,12 +88,17 @@ class App:
 
     # Handles some events from pygame.
     def handle_events(self) -> None:
+        user_input.mouse_rad = 0
+
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                self.running = False
+                app_globals.running = False
 
             if event.type == pygame.WINDOWRESIZED:
                 self.window_size = self.window.get_size()
+
+            if event.type == pygame.MOUSEWHEEL:
+                user_input.mouse_rad = event.y
 
     # Updates everything.
     def update(self) -> None:
@@ -101,7 +111,8 @@ class App:
         user_input.mouse_pos = self.window_to_canvas(
             pygame.mouse.get_pos()
         )
-        user_input.mouse = pygame.mouse.get_pressed()
+
+        user_input.mouse = (False, False, False) if app_globals.fading else pygame.mouse.get_pressed()
 
         user_input.keys = pygame.key.get_pressed()
 
@@ -118,7 +129,7 @@ class App:
                 self.canvas,
                 f"FPS: {app_globals.fps}",
                 Vector2(6,6),
-                app_globals.font_16,
+                app_globals.font_16
             )
 
         viewport = self.get_viewport()
