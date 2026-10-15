@@ -89,19 +89,19 @@ This project serves as a learning project where I can experiment with different 
 <table frame="void" rule="none">
   <tr>
     <td align="center">
-      <img src="https://github.com/user-attachments/assets/90a16669-420a-4f81-92f7-17b4dbeea33e" width="100%" alt="Main Menu" />
+      <img src="assets/screenshots/menu.png" width="100%" alt="Main Menu" />
       <br>
       <strong> Main Menu </strong>
     </td>
     <td align="center">
-      <img src="https://github.com/user-attachments/assets/3328e5f3-a9dd-4288-9f3a-d3d41a05fd78" width="100%" alt="Grid Editor" />
+      <img src="assets/screenshots/editor.png" width="100%" alt="Grid Editor" />
       <br>
       <strong> Grid Editor </strong>
     </td>
   </tr>
   <tr>
     <td align="center">
-      <img src="https://github.com/user-attachments/assets/17cc30fe-1a57-44c5-be39-efd3b9edac90" width="100%" alt="Pulsar Pattern" />
+      <img src="assets/screenshots/pulsar.gif" width="100%" alt="Pulsar Pattern" />
       <br>
       <strong> Pulsar Pattern </strong>
     </td>
@@ -112,4 +112,6 @@ This project serves as a learning project where I can experiment with different 
 
 ## Download
 
-<!-- Releases and executable builds -->
+Download the latest version from [GitHub Releases](https://github.com/Jan-Lucca-Bauer/Conways-Game-of-Life/releases/latest)
+
+Pre-built downloads will be avaible once a release built has been published.
