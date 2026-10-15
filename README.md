@@ -105,6 +105,11 @@ This project serves as a learning project where I can experiment with different 
       <br>
       <strong> Pulsar Pattern </strong>
     </td>
+    <td align="center">
+      <img src="assets/screenshots/glider.gif" width="100%" alt="Glider Pattern" />
+      <br>
+      <strong> Glider Pattern </strong>
+    </td>
   </tr>
 </table>
 
