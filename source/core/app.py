@@ -5,6 +5,7 @@ import data.app_globals as app_globals
 import data.user_input as user_input
 from utils.transition_handler import Transition
 from utils.scene_handler import SceneHandler
+from utils.file_utils import resource_path
 
 class App:
 
@@ -38,7 +39,7 @@ class App:
         pygame.display.set_caption(app_globals.title)
 
         pygame.display.set_icon(
-            pygame.image.load("assets/images/icon.png").convert_alpha()
+            pygame.image.load(resource_path("assets/images/icon.png")).convert_alpha()
         )
 
         self.canvas = pygame.Surface(base_res)

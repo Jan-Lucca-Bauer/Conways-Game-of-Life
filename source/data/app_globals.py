@@ -6,6 +6,7 @@ from utils.transition_handler import Transition
 from scenes.main_menu import MainMenu
 from scenes.game import Game
 from ui.animation.animation import Animation, Easings
+from utils.file_utils import resource_path
 
 # Just some meta data.
 version = "0.1.0"
@@ -36,17 +37,17 @@ class Scene(Enum):
 # Init for the fonts.
 pygame.font.init()
 
-font_16 = pygame.font.Font("assets/fonts/JetBrainsMono-Regular.ttf", 16)
-font_20 = pygame.font.Font("assets/fonts/JetBrainsMono-Regular.ttf", 20)
-font_32 = pygame.font.Font("assets/fonts/JetBrainsMono-Regular.ttf", 32)
-font_64 = pygame.font.Font("assets/fonts/JetBrainsMono-Regular.ttf", 64)
+font_16 = pygame.font.Font(resource_path("assets/fonts/JetBrainsMono-Regular.ttf"), 16)
+font_20 = pygame.font.Font(resource_path("assets/fonts/JetBrainsMono-Regular.ttf"), 20)
+font_32 = pygame.font.Font(resource_path("assets/fonts/JetBrainsMono-Regular.ttf"), 32)
+font_64 = pygame.font.Font(resource_path("assets/fonts/JetBrainsMono-Regular.ttf"), 64)
 
 # Init for the sounds and themes.
 pygame.mixer.init()
 
-click = pygame.mixer.Sound("assets/sfx/click.mp3")
-hover = pygame.mixer.Sound("assets/sfx/hover.mp3")
-menu_theme = pygame.mixer.Sound("assets/music/menu_theme.mp3")
+click = pygame.mixer.Sound(resource_path("assets/sfx/click.mp3"))
+hover = pygame.mixer.Sound(resource_path("assets/sfx/hover.mp3"))
+menu_theme = pygame.mixer.Sound(resource_path("assets/music/menu_theme.mp3"))
 
 # Pre animations for the elements. To lazy to write all animations again and again xD.
 def hover_button():

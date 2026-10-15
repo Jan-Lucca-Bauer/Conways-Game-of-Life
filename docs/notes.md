@@ -68,16 +68,19 @@ The core simulation is now working, including camera controls, cell interaction,
 
 ## Day 6 - 14/10/2026 *(break)*
 
-Decided to take a another break to think about some ideas.
+Decided to take another break to think about some ideas.
 
 <br>
 
 ## Day 7 - 15/10/2026 *(4h)*
 
 ### Work Done
-Added a border to the grid. Made the theme also play in the editor. Added undo and redo. 
+Added a world border to the grid, integraded the music theme into the editor, and implemented undo and redo.
 
 ### Problems & Dicisions
-Decided to add a border first because I currently don't know how to make many cells run smooth. I'm thinking about doing a chunk system, but first I gonna reseach a bit how some other Conway's Game of Life recreations did it. First I also gonna keep the editor simple, means I won't add stuff like copy-paste, hold placing, and so on. The reason for that is, that these features, especialy the copy-paste will need the chunk system I'm thinking about.
+I decided to implement a world border first because I'm currently looking for ways to improve the performance when handling a large number of cells. I'm thinking about implementing a chunk system, but I want to reasearch how Conway's Game of Life implementations handle large grids before deciding on a approach.
+
+For now, I also decided to keep the editor simple and keep out features such as copy-paste and continuous cell placement. The copy-paste could benefit from the chunk system, so I want to make a stable grid architecture before adding some advanced editing features.
 
 ### Result & Next Steps
+The editor now has a defined world boundary, includes the music theme, and allows users to undo and redo changes. Next I will focus on my other projects for a while before continuing work on this one.
