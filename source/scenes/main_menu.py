@@ -24,7 +24,8 @@ class MainMenu:
                 app_globals.font_32,
                 on_click=scene_change(None, 1, 0.5),
                 width=300, height=60,
-                animations=app_globals.hover_button()
+                animations=app_globals.hover_button(),
+                disabled=True
             ),
             Button(
                 "Settings",
@@ -32,7 +33,8 @@ class MainMenu:
                 app_globals.font_32,
                 on_click=scene_change(None, 1, 0.5),
                 width=300, height=60,
-                animations=app_globals.hover_button()
+                animations=app_globals.hover_button(),
+                disabled=True
             ),
             Button(
                 "Quit",
@@ -45,7 +47,7 @@ class MainMenu:
         ]
         self.gradient = Gradient((30,30,35), (25,25,30), 6)
 
-        app_globals.menu_theme.play(-1)
+        app_globals.menu_theme.set_volume(1)
 
     def update(self, dt: float) -> None:
         for button in self.buttons:
@@ -79,3 +81,22 @@ class MainMenu:
         # Buttons.
         for button in self.buttons:
             button.render(canvas)
+
+        # Version.
+        draw_text(
+            canvas,
+            f"v{app_globals.version}",
+            Vector2(6, 694),
+            app_globals.font_16,
+            alpha=127
+        )
+
+        # Version info.
+        draw_text(
+            canvas,
+            "Library and settings will be added in future versions",
+            Vector2(640, 694),
+            app_globals.font_16,
+            align="center",
+            alpha=127
+        )

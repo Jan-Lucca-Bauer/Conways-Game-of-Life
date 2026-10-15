@@ -1,7 +1,7 @@
 from collections import Counter
 from data.rules import RuleMode
 
-def next_generation(alive_cells: set[tuple[int, int]], rule: RuleMode) -> set[tuple[int, int]]:
+def next_generation(alive_cells: set[tuple[int, int]], rule: RuleMode, grid) -> set[tuple[int, int]]:
     # Creates a counter for counting how many neighbors each alive cell has.
     neighbor_counts = Counter()
 
@@ -16,11 +16,12 @@ def next_generation(alive_cells: set[tuple[int, int]], rule: RuleMode) -> set[tu
     next_cells = set()
 
     for cell, count in neighbor_counts.items():
-        if cell in alive_cells:
-            if count in rule.value.survival:
-                next_cells.add(cell)
+        if grid.in_grid(*cell):
+            if cell in alive_cells:
+                if count in rule.value.survival:
+                    next_cells.add(cell)
 
-        elif count in rule.value.birth:
-            next_cells.add(cell)
+            elif count in rule.value.birth:
+                next_cells.add(cell)
 
     return next_cells

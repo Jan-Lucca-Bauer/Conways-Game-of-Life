@@ -14,3 +14,4 @@ class RuleMode(Enum):
     maze = Rule({3}, {1, 2, 3, 4, 5})
     morley = Rule({3, 6, 8}, {2, 4, 5})
     anneal = Rule({4, 6, 7, 8}, {3, 5, 6, 7, 8})
+    test = Rule({1}, {1})

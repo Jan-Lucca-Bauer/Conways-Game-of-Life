@@ -22,13 +22,20 @@ def run(events) -> None:
                 app_globals.running = False
 
             case "toggle_sim":
-                data["game"].running = not data["game"].running
+                data["game"].toggle()
 
             case "step_sim":
+                data["game"].snapshot()
                 data["game"].step()
 
             case "clear_grid":
                 data["game"].clear()
+
+            case "undo_grid":
+                data["game"].undo()
+
+            case "redo_grid":
+                data["game"].redo()
 
             case _:
                 raise ValueError(f"Unknown event type: {data["type"]}")
@@ -66,5 +73,19 @@ def step_sim(game) -> dict:
 def clear_grid(game) -> dict:
     return {
         "type": "clear_grid",
+        "game": game
+    }
+
+# Event to undo.
+def undo_grid(game) -> dict:
+    return {
+        "type": "undo_grid",
+        "game": game
+    }
+
+# Event to redo.
+def redo_grid(game) -> dict:
+    return {
+        "type": "redo_grid",
         "game": game
     }

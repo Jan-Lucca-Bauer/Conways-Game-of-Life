@@ -65,3 +65,19 @@ Getting the positioning to work correctly with the camera was challenging becaus
 
 ### Result & Next Steps
 The core simulation is now working, including camera controls, cell interaction, rendering, and the basic Game of Life rules. Next, I plan to expand the editor functionality by adding features such as holding the mouse button to continuously place or remove cells, copying and pasting patterns, and improving some other stuff.
+
+## Day 6 - 14/10/2026 *(break)*
+
+Decided to take a another break to think about some ideas.
+
+<br>
+
+## Day 7 - 15/10/2026 *(4h)*
+
+### Work Done
+Added a border to the grid. Made the theme also play in the editor. Added undo and redo. 
+
+### Problems & Dicisions
+Decided to add a border first because I currently don't know how to make many cells run smooth. I'm thinking about doing a chunk system, but first I gonna reseach a bit how some other Conway's Game of Life recreations did it. First I also gonna keep the editor simple, means I won't add stuff like copy-paste, hold placing, and so on. The reason for that is, that these features, especialy the copy-paste will need the chunk system I'm thinking about.
+
+### Result & Next Steps

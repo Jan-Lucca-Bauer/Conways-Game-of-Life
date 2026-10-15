@@ -4,8 +4,10 @@ import data.app_globals as app_globals
 import math
 
 class Grid:
-    def __init__(self, cell_size: int,) -> None:
+    def __init__(self, cell_size: int, grid_size: int) -> None:
         self.cell_size = cell_size
+        self.grid_size = grid_size
+
         self.alive_cells: set[tuple[int, int]] = set()
 
         self.surface = pygame.Surface(
@@ -78,24 +80,62 @@ class Grid:
                 rect = pygame.Rect(
                     round(screen_pos.x),
                     round(screen_pos.y),
-                    max(1, size),
-                    max(1, size)
+                    size,
+                    size
                 )
 
                 pygame.draw.rect(self.surface, (220, 240, 255), rect)
+
+    def render_border(self, camera) -> None:
+        world_size = self.grid_size * self.cell_size
+
+        world_pos = Vector2(
+            -world_size / 2,
+            -world_size / 2
+        )
+
+        screen_pos = (
+            world_pos - camera.pos
+        ) * camera.zoom + app_globals.center
+
+        screen_size = math.ceil(world_size * camera.zoom)
+
+        border_rect = pygame.Rect(
+            round(screen_pos.x),
+            round(screen_pos.y),
+            screen_size,
+            screen_size
+        )
+
+        pygame.draw.rect(
+            self.surface,
+            (255, 100, 100),
+            border_rect,
+            width=2
+        )
 
     def render(self, canvas: pygame.Surface, camera):
         self.surface.fill((0, 0, 0, 0))
 
         self.render_grid(camera)
         self.render_cells(camera)
+        self.render_border(camera)
 
         canvas.blit(self.surface, (0, 0))
 
     def toggle_cell(self, x: int, y: int) -> None:
-        cell = (x, y)
+        if self.in_grid(x, y):
+            cell = (x, y)
 
-        if cell in self.alive_cells:
-            self.alive_cells.discard(cell)
-        else:
-            self.alive_cells.add(cell)
+            if cell in self.alive_cells:
+                self.alive_cells.discard(cell)
+            else:
+                self.alive_cells.add(cell)
+
+    def in_grid(self, x: int, y: int) -> bool:
+        half = self.grid_size / 2
+
+        return (
+            -half <= x < half and
+            -half <= y < half
+        )

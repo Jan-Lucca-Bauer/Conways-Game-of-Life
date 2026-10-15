@@ -35,7 +35,8 @@ class App:
 
         self.window = pygame.display.set_mode(window_size, pygame.RESIZABLE)
 
-        pygame.display.set_caption("Canways Game of Life")
+        pygame.display.set_caption(app_globals.title)
+
         pygame.display.set_icon(
             pygame.image.load("assets/images/icon.png").convert_alpha()
         )
@@ -43,6 +44,8 @@ class App:
         self.canvas = pygame.Surface(base_res)
 
         self.clock = pygame.time.Clock()
+
+        app_globals.menu_theme.play(-1)
 
     # Gives the values needed for transforming the canvas.
     def get_viewport(self) -> pygame.Rect:

@@ -4,9 +4,12 @@ from enum import Enum
 from utils.scene_handler import SceneHandler
 from utils.transition_handler import Transition
 from scenes.main_menu import MainMenu
-from scenes.grid_menu import GridMenu
 from scenes.game import Game
 from ui.animation.animation import Animation, Easings
+
+# Just some meta data.
+version = "0.1.0"
+title = "Conways Game of Life"
 
 # This file stores variables that need to be used in multiplie files.
 width: int
@@ -25,7 +28,6 @@ fading: bool = False
 # Enum for the scenes so we can easier access them.
 class Scene(Enum):
     main_menu = MainMenu
-    grid_menu = GridMenu
     game = Game
 
     def __get__(self, instance, owner):

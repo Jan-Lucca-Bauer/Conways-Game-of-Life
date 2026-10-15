@@ -20,6 +20,7 @@ class Button(BaseElement):
         align: str = "center",
         valign: str = "center",
         scale: float = 1,
+        disabled: bool = False,
         animations = None
     ) -> None:
         
@@ -28,6 +29,7 @@ class Button(BaseElement):
         self.text = text or " "
         self.font = font
         self.on_click = on_click
+        self.disabled = disabled
         
         self.padding = padding
         self.border_radius = border_radius
@@ -39,11 +41,12 @@ class Button(BaseElement):
         self.style = {
             "normal": {"text": (255, 255, 255), "bg": (50, 50, 50)},
             "hover": {"text": (255, 255, 255), "bg": (80, 80, 80)},
-            "press": {"text": (200, 200, 200), "bg": (120, 120, 120)}
+            "press": {"text": (200, 200, 200), "bg": (120, 120, 120)},
+            "disabled": {"text": (120, 120, 120), "bg": (35, 35, 35)}
         }
 
     def update(self, dt: float):
-        if self.rect.collidepoint(user_input.mouse_pos) and not app_globals.fading:
+        if self.rect.collidepoint(user_input.mouse_pos) and not (app_globals.fading or self.disabled):
             if not self.is_hovered:
                 app_globals.hover.play()
                 self.is_hovered = True
@@ -71,6 +74,8 @@ class Button(BaseElement):
             current_style = self.style["press"]
         elif self.is_hovered:
             current_style = self.style["hover"]
+        elif self.disabled:
+            current_style = self.style["disabled"]
         else:
             current_style = self.style["normal"]
 
