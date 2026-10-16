@@ -24,7 +24,7 @@
 [Conway's Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life)
 is a celluar automaton simulation created by mathematican John Horton Conway. It contains a grid of cells that can either be alive or dead. Each cell's state changes according to a small set of rules based on the amount of neighboring cells. These simple rules can produce complex and amazing patterns.
 
-The origina task was to implement Conway's Game of Life. I used this opportunity to go beyond the basic requirements and explore additional aspects of software development. Beside the simulation itself, I built reuseable UI components, a scene system, and other systems using Python and Pygame.
+The original task was to implement Conway's Game of Life. I used this opportunity to go beyond the basic requirements and explore additional aspects of software development. Beside the simulation itself, I built reuseable UI components, a scene system, and other systems using Python and Pygame.
 
 This project serves as a learning project where I can experiment with different things while gradually improving my implementation.
 
